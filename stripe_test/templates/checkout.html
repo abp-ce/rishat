@@ -18,6 +18,11 @@
       </div>
       <form action="/buy/{{item.id}}/" method="GET">
         {% csrf_token %}
+        <input type="radio" name="currency" value="{{item.currency}}" checked>{{item.currency}}
+        {% for currency in currencies %}
+          <input type="radio" name="currency" value="{{currency.code}}">{{currency.code}}
+        {% endfor %}
+        <br>
         <button type="submit">Checkout</button>
       </form>
     </section>

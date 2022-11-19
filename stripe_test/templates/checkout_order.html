@@ -18,7 +18,7 @@
       
         </div>
       </div>
-      <form action="/buy/{{order.id}}/" method="GET">
+      <form action="/buy_order/{{order.id}}/" method="GET">
         {% csrf_token %}
         <button type="submit">Checkout</button>
       </form>
