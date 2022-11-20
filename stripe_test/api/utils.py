@@ -7,8 +7,8 @@ from stripe_test.settings import STRIPE_API_KEY
 
 stripe.api_key = STRIPE_API_KEY
 
-SUCCESS_URL = 'http://localhost:8000/static/success.html'
-CANCEL_URL = 'http://localhost:8000/static/cancel.html'
+SUCCESS_URL = '/static/success.html'
+CANCEL_URL = '/static/cancel.html'
 
 
 def make_tax_rates(order):
@@ -59,7 +59,7 @@ def make_line_items(order, tax_rates):
     return line_items
 
 
-def process_order(order, currency='rub'):
+def process_order(request, order, currency='rub'):
     line_items = make_line_items(order, make_tax_rates(order))
     discounts = make_discounts(order)
     try:
@@ -67,8 +67,8 @@ def process_order(order, currency='rub'):
             line_items=line_items,
             discounts=discounts,
             mode='payment',
-            success_url=SUCCESS_URL,
-            cancel_url=CANCEL_URL,
+            success_url=request.build_absolute_uri(SUCCESS_URL),
+            cancel_url=request.build_absolute_uri(CANCEL_URL),
             currency=currency
         )
     except Exception as e:

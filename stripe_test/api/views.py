@@ -8,7 +8,7 @@ from .utils import process_order
 @api_view(['GET'])
 def buy_order(request, id):
     order = get_object_or_404(Order, pk=id)
-    return process_order(order)
+    return process_order(request, order)
 
 
 @api_view(['GET'])
@@ -17,7 +17,12 @@ def buy_item(request, id):
     item = get_object_or_404(Item, pk=id)
     order = Order.objects.create()
     order.items.add(item)
-    return process_order(order, currency)
+    return process_order(request, order, currency)
+
+
+@api_view(['GET'])
+def main(request):
+    return render(request, 'index.html')
 
 
 @api_view(['GET'])
