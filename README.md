@@ -4,7 +4,9 @@
 
 *Реализованы order, tax, discount и поддержка валют для одиночных товаров.  
 Проект временно доступен по адресу:*  
-http://abp-yc.mooo.com/
+http://abp-yc.mooo.com/.  
+*Логин админки: admin  
+Пароль: admin*
 
 
 
