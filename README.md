@@ -4,7 +4,7 @@
 
 *Реализованы order, tax, discount и поддержка валют для одиночных товаров.  
 Проект временно доступен по адресу:*  
-http://abp-yc.mooo.com/.  
+https://abp.pythonanywhere.com
 *Логин админки: admin  
 Пароль: admin*
 
@@ -52,10 +52,12 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Создать базу, superuser и .env файл, переместившись в директорию проекта:
+Собрать статику, создать базу, superuser и .env файл, переместившись в директорию проекта:
 
 ```
 cd stripe_test
+
+python manage.py collectstatic
 
 python manage.py migrate
 
